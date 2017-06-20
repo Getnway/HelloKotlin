@@ -1,41 +1,95 @@
 package com.example
 
+import com.example.`class`.C
+import com.example.`class`.DD
+import com.example.`class`.Person
+import com.example.`class`.User
+
 fun main(args: Array<String>) {
     println("Kotlin")
+    baseStatement()
+//    classStatement()
+//    objectStatement()
+
+}
+
+fun objectStatement() {
+    anonymousClass()
+    justObject()
+    ObjectClass().objectReturn()
+}
+
+private fun classStatement() {
+    // constructor
+    println("========= constructor =========")
+    var unset = Person()
+    var mike = Person("mike")
+    var john = Person("john", "wall")
+
+    // inherit
+    println("========= inherit =========")
+    val c = C()
+    c.f()
+    c.a()
+    c.b()
+
+    // interface
+    println("========= interface =========")
+    DD().method()
+
+    // data class
+    println("========= data class =========")
+    var user = User("kk", 15)
+    println("user: ${user.toString()}")
+}
+
+private fun baseStatement() {
     var k = KotlinClass()
 
+    println("========= useBoolean =========")
     k.useBoolean(null)
     k.useBoolean(true)
     k.useBoolean(false)
     println()
 
+    println("========= autoCast =========")
     k.autoCast(1)
     k.autoCast("123")
     println()
 
+    println("========= loop =========")
     k.loop()
     println()
 
+    println("========= ifStatement =========")
     k.ifStatement(2)
     println()
 
+    println("========= whenStatement =========")
     println("whenStatement(1) ${k.whenStatement(1)}")
     println("whenStatement(100L) ${k.whenStatement(100L)}")
     println("whenStatement(100F) ${k.whenStatement(100F)}")
     println()
 
+    println("========= rangs =========")
     k.rangs(10)
     println()
 
+    println("========= nullCheck =========")
     println("nullCheck(null) ${k.nullCheck(null)}")
     println("nullCheck(abc) ${k.nullCheck("abc")}")
     println()
 
+    println("========= tryCatch =========")
     k.tryCatch()
     println()
 
+    println("========= list =========")
     k.list()
     println()
+
+    println("========= extend function =========")
+    extendFunction()
 }
 
 class KotlinClass {
@@ -159,19 +213,5 @@ class KotlinClass {
         val a = arrayOf(1, 2, 3)
         val list2 = asList(-1, 0, *a, 4)
         println("list() list2:$list2")
-    }
-}
-
-// constructor关键字声明构造函数，参数可以定义默认值
-class Person public constructor(firstName: String = "") {
-    // init关键字声明初始化代码块
-    init {
-        // firstName可以在这里使用
-        println("init")
-    }
-
-    // 如果类有主构造函数，其他构造函数需要直接或间接的调用主构造函数
-    constructor(firstName: String, parent: Person) : this(firstName) {
-        println("constructor(firstName: String, parent: Person) : this(firstName)")
     }
 }
