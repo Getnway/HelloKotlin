@@ -4,6 +4,11 @@ import com.example.`class`.C
 import com.example.`class`.DD
 import com.example.`class`.Person
 import com.example.`class`.User
+const val MAX = 239
+object Obj {
+    @JvmStatic fun foo() {}
+    fun bar() {}
+}
 
 fun main(args: Array<String>) {
     println("Kotlin")
@@ -11,6 +16,13 @@ fun main(args: Array<String>) {
 //    classStatement()
 //    objectStatement()
 
+    val list = ArrayList<String>() // non-null (constructor result)
+    list.add("Item")
+    val size = list.size // non-null (primitive int)
+    val item = list[2] // platform type inferred (ordinary Java object)
+    item.substring(1) // allowed, may throw an exception if item == null
+    val nullable: String? = item // allowed, always works
+    val notNull: String = item // allowed, may fail at runtime
 }
 
 fun objectStatement() {
