@@ -4,7 +4,10 @@ import com.example.`class`.C
 import com.example.`class`.DD
 import com.example.`class`.Person
 import com.example.`class`.User
+import java.util.Arrays.asList
+
 const val MAX = 239
+
 object Obj {
     @JvmStatic fun foo() {}
     fun bar() {}
@@ -12,17 +15,31 @@ object Obj {
 
 fun main(args: Array<String>) {
     println("Kotlin")
-    baseStatement()
+//    baseStatement()
 //    classStatement()
 //    objectStatement()
 
-    val list = ArrayList<String>() // non-null (constructor result)
-    list.add("Item")
-    val size = list.size // non-null (primitive int)
-    val item = list[2] // platform type inferred (ordinary Java object)
-    item.substring(1) // allowed, may throw an exception if item == null
-    val nullable: String? = item // allowed, always works
-    val notNull: String = item // allowed, may fail at runtime
+    lambdaStatement()
+}
+
+private fun lambdaStatement() {
+    fun <T, R> lambdaMap(ints: List<T>, transform: (T) -> R): List<R> {
+        val result = arrayListOf<R>()
+        for (item in ints)
+            result.add(transform(item))
+        return result
+    }
+
+    val ints = asList(1, 2, 3, 5, 7, 9, 4, 6, 8)
+    var doubled = lambdaMap(ints, { value -> value * 2 })
+    println("lambdaStatement() $doubled")
+
+    // it：单个参数的隐式名称
+    doubled = lambdaMap(ints) { it * 2 }
+    println("lambdaStatement() $doubled")
+
+    doubled = ints.filter { it > 5 }.sortedBy { it }.map { it * 2 }
+    println("lambdaStatement() $doubled")
 }
 
 fun objectStatement() {

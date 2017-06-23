@@ -12,7 +12,7 @@ class View {
         fun onClick()
     }
 
-    fun setOnClickLinstener(onClickListener: OnClickListener) {
+    fun setOnClickListener(onClickListener: OnClickListener) {
         listener = onClickListener
     }
 
@@ -24,7 +24,7 @@ class View {
 fun anonymousClass() {
     var a = 5   // 访问函数局部变量不需要final
     var view = View()
-    view.setOnClickLinstener(object : View.OnClickListener {
+    view.setOnClickListener(object : View.OnClickListener {
         override fun onClick() {
             println("onClick(): $a")
             a += 5

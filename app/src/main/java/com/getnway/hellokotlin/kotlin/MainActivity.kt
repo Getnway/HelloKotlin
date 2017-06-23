@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 //        tv_content = findViewById(R.id.tv_content) as TextView
 //        btn_ok = findViewById(R.id.btn_ok) as Button
 
-//        btn_ok!!.setOnClickListener { tv_content!!.text = et_content!!.text }
+//        btn_ok?.setOnClickListener { tv_content?.text = et_content?.text }
         btn_ok.setOnClickListener { tv_content.text = et_content.text }
     }
 }
